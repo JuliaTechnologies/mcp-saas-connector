@@ -1,0 +1,33 @@
+{
+  "name": "@juliatechnologies/mcp-saas-connector",
+  "version": "0.1.0",
+  "description": "One MCP server for the SaaS back office: Stripe, HubSpot, and Google Sheets exposed as typed, read-only-by-default tools for Claude and any MCP client.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Julia Technologies LLC (https://juliatech.com)",
+  "homepage": "https://github.com/JuliaTechnologies/mcp-saas-connector",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuliaTechnologies/mcp-saas-connector.git"
+  },
+  "keywords": ["mcp", "model-context-protocol", "mcp-server", "stripe", "hubspot", "google-sheets", "saas", "claude", "ai-agents"],
+  "bin": { "mcp-saas-connector": "dist/index.js" },
+  "main": "dist/index.js",
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "node -e \"require('fs').chmodSync('dist/index.js', 0o755)\"",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "typescript": "^6.0.3"
+  }
+}
